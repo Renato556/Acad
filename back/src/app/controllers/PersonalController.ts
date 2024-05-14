@@ -10,4 +10,9 @@ personalRouter.get('/', async (_req: Request, res: Response): Promise<Response> 
     return res.status(200).json(personals);
 });
 
+personalRouter.get('/:phone', async (req: Request, res: Response): Promise<Response> => {
+    const personal = await PersonalRepository.getOnePersonalByPhone(req.params.phone);
+    return personal ? res.status(200).json(personal) : res.sendStatus(404);
+});
+
 export default personalRouter;

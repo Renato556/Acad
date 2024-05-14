@@ -8,4 +8,8 @@ const getAllAlumni = (): Promise<IAlumni[]> => {
     return alumniRepository.find();
 }
 
-export default { getAllAlumni };
+const getOneAlumnyByEmail = (email: string): Promise<IAlumni|null> => {
+    return alumniRepository.findOneBy({ email })
+}
+
+export default { getAllAlumni, getOneAlumnyByEmail };

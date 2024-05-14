@@ -8,4 +8,8 @@ const getAllPersonal = (): Promise<IPersonal[]> => {
     return personalRepository.find();
 }
 
-export default { getAllPersonal };
+const getOnePersonalByPhone = (phone: string): Promise<IPersonal|null> => {
+    return personalRepository.findOneBy({ phone })
+}
+
+export default { getAllPersonal, getOnePersonalByPhone };
