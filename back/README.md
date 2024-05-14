@@ -1,7 +1,14 @@
-# Awesome Project Build with TypeORM
+Inicio do projeto:
+```
+npx typeorm init --name back --database mysql
+```
 
-Steps to run this project:
+Gerar nova migration:
+```
+npm run typeorm migration:create .\src\database\migrations\CreatePersonalTable
+```
 
-1. Run `npm i` command
-2. Setup database settings inside `data-source.ts` file
-3. Run `npm start` command
+Importar migrations para o DB:
+```
+npm run typeorm -- -d ./src/database/data-source.ts migration:run
+```

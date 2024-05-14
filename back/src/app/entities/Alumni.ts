@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from "typeorm";
+import Personal from "./Personal";
 
 @Entity('alumni')
 class Alumni {
@@ -11,8 +12,8 @@ class Alumni {
     @Column('varchar', { length: 100, nullable: false })
     email: string
 
-    @Column('int', { nullable: false })
-    personal_id: number;
+    @ManyToOne(() => Personal, (personal) => personal.id)
+    personal: number;
 }
 
 export default Alumni;

@@ -27,7 +27,7 @@ export class CreateAlumniTable1715642251653 implements MigrationInterface {
                         isNullable: false
                     },
                     {
-                        name: 'personal_id',
+                        name: 'personal',
                         type: 'int',
                         isNullable: false,
                     }
