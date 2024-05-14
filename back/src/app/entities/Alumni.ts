@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from "typeorm";
 import Personal from "./Personal";
 
 @Entity('alumni')
@@ -12,7 +12,11 @@ class Alumni {
     @Column('varchar', { length: 100, nullable: false })
     email: string
 
+    @Column("int", { nullable: true })
+    personalId: number;
+
     @ManyToOne(() => Personal, (personal) => personal.id)
+    @JoinColumn({ name: 'personalId' })
     personal: number;
 }
 

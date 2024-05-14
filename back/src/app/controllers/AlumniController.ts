@@ -11,14 +11,14 @@ alumniRouter.get('/', async (_req: Request, res: Response): Promise<Response> =>
 });
 
 alumniRouter.get('/:email', async (req: Request, res: Response): Promise<Response> => {
-    const alumni = await AlumniRepository.getOneAlumnyByEmail(req.params.email);
+    const alumni = await AlumniRepository.getOneAlumniByEmail(req.params.email);
     return alumni ? res.status(200).json(alumni) : res.sendStatus(404);
 });
 
 alumniRouter.post('/', async (req: Request, res: Response): Promise<Response> => {
     const validation = AlumniValidator.validate(req.body);
     if (validation) {
-        const alumniAlreadyExists = await AlumniRepository.getOneAlumnyByEmail(req.body.email);
+        const alumniAlreadyExists = await AlumniRepository.getOneAlumniByEmail(req.body.email);
         if (!alumniAlreadyExists) {
             const personalExists = await PersonalRepository.getOnePersonalById(req.body.personal);
             if (personalExists) {
