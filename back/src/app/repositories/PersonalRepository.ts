@@ -12,4 +12,12 @@ const getOnePersonalByPhone = (phone: string): Promise<IPersonal|null> => {
     return personalRepository.findOneBy({ phone })
 }
 
-export default { getAllPersonal, getOnePersonalByPhone };
+const getOnePersonalById = (id: number): Promise<IPersonal|null> => {
+    return personalRepository.findOneBy({ id })
+}
+
+const save = (personal: Personal) => {
+    personalRepository.save(personal);
+}
+
+export default { getAllPersonal, getOnePersonalByPhone, getOnePersonalById, save };

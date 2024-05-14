@@ -6,10 +6,14 @@ const alumniRepository = AppDataSource.getRepository(Alumni);
 
 const getAllAlumni = (): Promise<IAlumni[]> => {
     return alumniRepository.find();
-}
+};
 
 const getOneAlumnyByEmail = (email: string): Promise<IAlumni|null> => {
-    return alumniRepository.findOneBy({ email })
-}
+    return alumniRepository.findOneBy({ email });
+};
 
-export default { getAllAlumni, getOneAlumnyByEmail };
+const save = (alumni: Alumni) => {
+    alumniRepository.save(alumni);
+};
+
+export default { getAllAlumni, getOneAlumnyByEmail, save };
